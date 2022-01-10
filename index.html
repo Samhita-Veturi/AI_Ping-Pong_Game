@@ -19,14 +19,38 @@
     <body background="background1.jpg">
         <center>
 <h1 class="btn-secondary" id="Heading"> AI Ping-Pong Game
-    <button class="btn btn-outline-light Insta" data-target="#Instructions_Modal" data-toggle="modal" id="Button_I">Instructions</button>
+    <button class="btn btn-outline-light Insta" data-target="#Insta_Modal" data-toggle="modal" id="Button_I">Instructions</button>
     <hr>
 </h1>
-<button id="Start_Button" class="btn btn-outline-light" onclick="startGame();">Let's start playing!</button>
+<div class="modal fade" id="Insta_Modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal" style="float: left; position: absolute;">&times;</button>
+                <h4 style="text-align: center; margin-left: 170px;">Instructions</h4>
+            </div>
+            <div class="modal-content" style="text-align: justify;padding: 10px;">
+                <br>
+                <p style="padding-left: 5px;">The instructructions on how to play this game are:</p>
+                <ol>
+                    <li>Keep your laptop screen straight</li>
+                    <li>Move yourself approximately 3-4 feet away from the laptop</li>
+                    <li>Move your right wrist in an ascending and decending manner, a red dot should appear on your right wrist</li>
+                    <li>Now press the play button, and again move yourself 3-4 feet away from laptop</li>
+                    <li>The red paddel is your paddel, that will move as per the movement of your right wrist</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<button id="Start_Button" class="btn btn-outline-light" onclick="Start_Game();">Let's start playing!</button>
 <br><br>
 <h3 class="btn btn-secondary">Game Status: </h3>
 <br><br>
 <div id="Canvas"></div>
+<br><br>
+<button class="btn btn-outline-primary" id="Restart" onclick="Restart();">Should we start over?</button>
+<br><br><br><br><br>
 <div id="footer">
     <kbd>Developed & Designed by: Prashant Shukla & Samhita V</kbd>
 </div>
