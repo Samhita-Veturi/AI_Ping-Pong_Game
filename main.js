@@ -23,12 +23,19 @@ var ball = {
 function setup(){
   var canvas =  createCanvas(700,600);
   canvas.parent('Canvas');
+  var Video = createCapture(VIDEO);
+  Video.size(700, 600);
+  Video.hide();
+  var Pose_Net = ml5.poseNet(Video, Model_Loaded)
 }
-
+function Model_Loaded(){
+  console.log("Model Loaded!");
+  //Pose_Net.on('pose', Got_Poses);
+}
 
 function draw(){
  background(0); 
-
+image(Video, 0, 0, 700, 600);
  fill("black");
  stroke("black");
  rect(680,0,20,700);
@@ -92,7 +99,7 @@ function midline(){
 function drawScore(){
     textAlign(CENTER);
     textSize(20);
-    fill("white");
+    fill("red");
     stroke(250,0,0)
     text("Player:",100,50)
     text(playerscore,140,50);
@@ -129,8 +136,8 @@ if(pcscore ==4){
     fill("white");
     stroke("white");
     textSize(25)
-    text("Game Over!☹☹",width/2,height/2);
-    text("Reload The Page!",width/2,height/2+30)
+    text("Game Over!",width/2,height/2);
+    text("Please reload The Page!",width/2,height/2+30)
     noLoop();
     pcscore = 0;
 }
@@ -143,8 +150,8 @@ if(pcscore ==4){
 //width height of canvas speed of ball 
 function models(){
     textSize(18);
-    fill(255);
-    noStroke();
+    fill(255, 0, 0);
+    stroke(255);
     text("Width:"+width,135,15);
     text("Speed:"+abs(ball.dx),50,15);
     text("Height:"+height,235,15)
