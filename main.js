@@ -48,7 +48,7 @@ function Got_Poses(results){
   }
 }
 
-function startGame(){
+function Start_Game(){
   Game_Status = "Start";
   document.getElementById("Game-Status").innerHTML = "Game Status: Playing";
 }
