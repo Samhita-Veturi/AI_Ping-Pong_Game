@@ -23,6 +23,13 @@ Right_Y = 0;
 Pose_Net = "";
 RightWrist_Score = "";
 var Game_Status = "";
+var BallPadel_Sound = "";
+var Missed_Sound = "";
+
+function preload(){
+  BallPadel_Sound = loadSound("ball_touch_paddel.wav");
+  Missed_Sound = loadSound("missed.wav");
+}
 
 function setup(){
   var canvas =  createCanvas(700,600);
@@ -53,6 +60,12 @@ function Start_Game(){
   document.getElementById("Game-Status").innerHTML = "Game Status: Playing";
 }
 
+function Restart(){
+  pcscore = 0;
+  playerscore = 0;
+  loop();
+}
+
 function draw(){
   if(Game_Status == "Start")
   {
@@ -76,7 +89,7 @@ if(RightWrist_Score > 0.2){
    fill(250,0,0);
     stroke(0,0,250);
     strokeWeight(0.5);
-   paddle1Y = mouseY; 
+   paddle1Y = Right_Y; 
    rect(paddle1X,paddle1Y,paddle1,paddle1Height,100);
    
    
@@ -107,7 +120,6 @@ function reset(){
    ball.y = height/2+100;
    ball.dx=3;
    ball.dy =3;
-   
 }
 
 
@@ -147,8 +159,9 @@ function move(){
        ball.dx=-ball.dx-0.5;       
    }
   if (ball.x-2.5*ball.r/2< 0){
-  if (ball.y >= paddle1Y&& ball.y <= paddle1Y + paddle1Height) {
-    ball.dx = -ball.dx+0.5; 
+  if (ball.y >= paddle1Y && ball.y <= paddle1Y + paddle1Height) {
+    ball.dx = -ball.dx+0.5;
+    BallPadel_Sound.play(); 
   }
   else{
     pcscore++;
@@ -164,7 +177,7 @@ if(pcscore ==4){
     stroke("white");
     textSize(25)
     text("Game Over!",width/2,height/2);
-    text("Please reload The Page!",width/2,height/2+30)
+    text("Should We Play Again?",width/2,height/2+30)
     noLoop();
     pcscore = 0;
 }
